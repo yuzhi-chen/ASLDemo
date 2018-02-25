@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>webcam</title>
+</head>
+<body>
+	<div class="camera">
+        <video id="video">Video stream not available.</video>
+
+	    <button id="startbutton">Take photo</button>
+        <button id="stopbutton">Stop</button><br/>
+        <a id="downloadLnk" download="YourFileName.jpg">Download as image</a>
+  </div>
+
+  <canvas id="canvas" style="display: none;">
+  </canvas>
+  <div class="output">
+    <img id="photo" alt="The screen capture will appear in this box.">
+  </div>
+
+  <script type="text/javascript">
+
+	  var width = 500;    // We will scale the photo width to this
+	  var height = 0;     // This will be computed based on the input stream
+
+	  var streaming = false;
+
+	  var video = null;
+	  var canvas = null;
+	  var photo = null;
+	  var startbutton = null;
+	  var stopbutton = null;
+
+
+	function startup() {
+	    video = document.getElementById('video');
+	    canvas = document.getElementById('canvas');
+	    photo = document.getElementById('photo');
+	    startbutton = document.getElementById('startbutton');
+	    stopbutton = document.getElementById('stopbutton');
+
+	    navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+	    .then(function(stream) {
+	        video.srcObject = stream;
+	        video.play();
+	    })
+	    .catch(function(err) {
+	        console.log("An error occured! " + err);
+	    });
+
+		video.addEventListener('canplay', function(ev){
+	      if (!streaming) {
+	        height = video.videoHeight / (video.videoWidth/width);
+
+	        video.setAttribute('width', width);
+	        video.setAttribute('height', height);
+	        canvas.setAttribute('width', width);
+	        canvas.setAttribute('height', height);
+	        streaming = true;
+	      }
+	    }, false);
+
+	    startbutton.addEventListener('click', function(ev){
+	      //var myVar = setInterval(takepicture, 100);
+	      takepicture();
+	      ev.preventDefault();
+	    }, false);
+	    clearphoto();
+
+	    stopbutton.onclick = function() {
+	    	clearInterval(takepicture);
+	    }
+    }
+
+    function clearphoto() {
+	    var context = canvas.getContext('2d');
+	    context.fillStyle = "#AAA";
+	    context.fillRect(0, 0, canvas.width, canvas.height);
+
+	    var data = canvas.toDataURL('image/png');
+	    photo.setAttribute('src', data);
+	}
+
+	function takepicture() {
+	    var context = canvas.getContext('2d');
+	    if (width && height) {
+	      canvas.width = width;
+	      canvas.height = height;
+	      context.drawImage(video, 0, 0, width, height);
+
+	      var data = canvas.toDataURL('image/png');
+	      photo.setAttribute('src', data);
+	    } else {
+	      clearphoto();
+        }
+
+        function download() {
+            var dt = canvas.toDataURL('image/jpeg');
+            this.href = dt;
+        };
+        downloadLnk.addEventListener('click', download, false);
+
+        //var url = "https://southcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze?";
+        var url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v1.1/Prediction/67e316fd-8684-405d-80e6-c346edd4d86e/image?iterationId=2cefc5ba-f85c-4fc6-aa7e-a900f253131b";
+
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", url, true);
+        ajax.setRequestHeader("Prediction-Key", "6ef0fd46ca2d4be2b1aec22a311bf77a");
+        ajax.setRequestHeader("Content-Type", "application/octet-stream");
+        canvas.toBlob(function(blob){
+            ajax.send(blob);
+            ajax.onreadystatechange = function() {
+                console.log(ajax.readyState);
+                if(ajax.readyState == XMLHttpRequest.DONE) {
+                    if(ajax.status == 200) {
+                        console.log("responseText: " + ajax.responseText);
+                        callback(ajax.responseText);
+                    }
+                    else {
+                        alert("AJAX Error. Error status: " + ajax.status);
+                    }
+                }
+            }
+        }, 'image/jpeg', 0.95);
+
+    }
+
+      function callback(myResponse) {
+          console.log("my response: " + myResponse);
+      }
+
+  	startup();
+
+ </script>
+
+</body>
+</html>

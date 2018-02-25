@@ -6,34 +6,56 @@ var azure = require('azure-storage');
 
 router.post('/', function (req, res, next) {
 
-  const url = req.body.url
+  //const url = req.body.url
+  //const multipleUrlString =`http://deafdatingzone.com/theme/custom/A-MP900385724.JPG,https://www.signingsavvy.com/images/words/alphabet/2/b1.jpg`
+  const urlFromWebsite = req.body.url
 
-  Promise.all([
-    // MAKE CALL TO CUSTOM VISION API
-    callAPI(url) // lives in codesnippits
-  ]).then(([response]) => {
-    var results = response
-    // PARSE THE RESPONSE TO FIND THE HIGHEST PREDICTION
-    const top = parseResponse(results.Predictions)  //found in code snippits also
-    // GET THE DATA FOR THE TOP SCORED TAG
-    const data = getTagData(top) // codesnippit
-    // RENDER RESULTS
-    res.render('results', {
-      title: 'Results',
-      description: data.description,
-      probability: data.probability,
-      photo: data.photo
+  let urlArray = urlFromWebsite.split(",")
+  let sentence = ""
+  let callCounter = 0
+  urlArray.forEach((url) => {
+    console.log(url)
+    callCounter += 1
+    Promise.all([
+      // MAKE CALL TO CUSTOM VISION API
+      callAPI(url) // lives in codesnippits
+    ]).then(([response]) => {
+      var results = response
+      // PARSE THE RESPONSE TO FIND THE HIGHEST PREDICTION
+      const top = parseResponse(results.Predictions)  //found in code snippits also
+      // GET THE DATA FOR THE TOP SCORED TAG
+      sentence += top.Tag.toLowerCase()
+      const data = getTagData(top) // codesnippit
+
+      console.log(sentence)
+
+      if (url === urlArray[urlArray.length-1]) {
+        console.log(sentence)
+        // RENDER RESULTS
+          res.render('results', {
+            title: 'Results',
+             description: sentence,
+             probability: data.probability,
+             photo: data.photo
+          })
+        // res.render('results', {
+        //   title: 'Results',
+        //   description: data.description,
+        //   probability: data.probability,
+        //   photo: data.photo
+        // })
+      }
+    }).catch(reason => {
+      console.log(`Promise was rejected becasue ${reason}`)
+
+      // RENDER AN ERROR MESSAGE
+      // res.render('results',
+      //   { title: 'Error',
+      //     description: 'Oops something went wrong!!' + reason,
+      //     probability: 100,
+      //     photo: '/images/Error.jpg'
+      //   })
     })
-  }).catch(reason => {
-    console.log(`Promise was rejected becasue ${reason}`)
-
-    // RENDER AN ERROR MESSAGE
-    res.render('results',
-      { title: 'Error',
-        description: 'Oops something went wrong!!' + reason,
-        probability: 100,
-        photo: '/images/Error.jpg'
-      })
   })
 })
 
@@ -55,12 +77,14 @@ function callAPI (url) {
     },
     body: `{"Url": "${url}"}`
   }
+  console.log("Url at API Response" + url)
 
   return request.post(options)
     .then((result) => {
       return JSON.parse(result)
     })
 }
+
 
 
 // This funtion goes in the controllers/results.js file under the "helper functions" comment
