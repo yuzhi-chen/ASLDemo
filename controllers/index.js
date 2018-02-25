@@ -4,8 +4,8 @@ const router = express.Router()
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index',
-    { title: 'Can\'t get this shit done?',
-      description: 'We can\'t either. Enter the link of a photo to find out if you belong in House Stark, House Lannister, or House Targaryen!' })
+    { title: 'ASL-to-English writing translator',
+      description: 'Welcome! This program aids Deaf children who are struggling with reading, by translating ASL finger-spelling into English. Just sign with your hand, take a photo, and the translator will give you the english letter!' })
 })
 
 module.exports = router
