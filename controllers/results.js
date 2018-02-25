@@ -99,6 +99,85 @@ function getTagData (top) {
       link = '/images/targaryen.png'
       description = 'Fierce like the Mother of Dragons, you just entered the Targaryen sigil!'
       break
+    case 'a':
+      link = '/images/a.png'
+      description = 'This letter is A'
+      break
+    case 'b':
+      link= '/images/b.png'
+      description = 'This letter is B'
+    case 'c':
+      link='/images/c.png'
+      description = 'This letter is C'
+    case 'd':
+      link= '/images/d.png'
+      description = 'This letter is D'
+    case 'e':
+      link= '/images/e.png'
+      description = 'This letter is E'
+    case 'f':
+      link= '/images/f.png'
+      description = 'This letter is F'
+    case 'g':
+      link= '/images/g.png'
+      description = 'This letter is G'
+    case 'h':
+      link= '/images/h.png'
+      description = 'This letter is H'
+    case 'i':
+      link= '/images/i.png'
+      description = 'This letter is I'
+    case 'j':
+      link= '/images/j.png'
+      description = 'This letter is J'
+    case 'k':
+      link= '/images/k.png'
+      description = 'This letter is K'
+    case 'l':
+      link= '/images/l.png'
+      description = 'This letter is L'
+    case 'm':
+      link= '/images/m.png'
+      description = 'This letter is M'
+    case 'n':
+      link= '/images/n.png'
+      description = 'This letter is N'
+    case 'o':
+      link= '/images/o.png'
+      description = 'This letter is O'
+    case 'p':
+      link= '/images/p.png'
+      description = 'This letter is P'
+    case 'q':
+      link= '/images/q.png'
+      description = 'This letter is Q'
+    case 'r':
+      link= '/images/r.png'
+      description = 'This letter is R'
+    case 's':
+      link= '/images/s.png'
+      description = 'This letter is S'
+    case 't':
+      link= '/images/t.png'
+      description = 'This letter is T'
+    case 'u':
+      link= '/images/u.png'
+      description = 'This letter is U'
+    case 'v':
+      link= '/images/v.png'
+      description = 'This letter is V'
+    case 'w':
+      link= '/images/w.png'
+      description = 'This letter is W'
+    case 'x':
+      link= '/images/x.png'
+      description = 'This letter is X'
+    case 'y':
+      link= '/images/y.png'
+      description = 'This letter is Y'
+    case 'z':
+      link= '/images/z.png'
+      description = 'This letter is Z'
     case '':
       link = '/images/Error.jpg'
       description = 'Oops something went wrong! Submit another link to try again!'
