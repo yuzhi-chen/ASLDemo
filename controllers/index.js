@@ -5,7 +5,7 @@ const router = express.Router()
 router.get('/', function (req, res, next) {
   res.render('index',
     { title: 'ASL-to-English writing translator',
-      description: 'Welcome! This program aids Deaf children who are struggling with reading, by translating ASL finger-spelling into English. Just sign with your hand, take a photo, and the translator will give you the english letter!' })
+      description: 'Welcome, I am the ASL-to-English writing translator! I help aid Deaf children who are struggling to read, by translating ASL finger-spelling into English. Just sign with your hand, take a photo, and I will give you the english letter!' })
 })
 
 module.exports = router
