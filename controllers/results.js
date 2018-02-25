@@ -2,8 +2,10 @@ require('dotenv').load()
 const request = require('request-promise-native')
 const express = require('express')
 const router = express.Router()
+var azure = require('azure-storage');
 
 router.post('/', function (req, res, next) {
+
   const url = req.body.url
 
   Promise.all([
@@ -11,13 +13,10 @@ router.post('/', function (req, res, next) {
     callAPI(url) // lives in codesnippits
   ]).then(([response]) => {
     var results = response
-
     // PARSE THE RESPONSE TO FIND THE HIGHEST PREDICTION
     const top = parseResponse(results.Predictions)  //found in code snippits also
-
     // GET THE DATA FOR THE TOP SCORED TAG
     const data = getTagData(top) // codesnippit
-
     // RENDER RESULTS
     res.render('results', {
       title: 'Results',
