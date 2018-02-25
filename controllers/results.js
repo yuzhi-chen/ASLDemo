@@ -87,28 +87,16 @@ function getTagData (top) {
 
   // Decide which image and description to use based on the tag passed in
   switch (top.Tag.toLowerCase()) {
-    case 'lannister':
-      link = '/images/lannister.png'
-      description = 'I spy the Lannister sigil, always pay your debts!'
-      break
-    case 'stark':
-      link = '/images/stark.png'
-      description = 'Looks like house Stark, winter is coming!'
-      break
-    case 'targaryen':
-      link = '/images/targaryen.png'
-      description = 'Fierce like the Mother of Dragons, you just entered the Targaryen sigil!'
-      break
     case 'a':
-      link = '/images/a.png'
+      link = '/images/a.JPG'
       description = 'This letter is A'
       break
     case 'b':
-      link= '/images/b1.jpg'
+      link= '/images/b1.JPG'
       description = 'This letter is B'
       break
     case 'c':
-      link='/images/c.png'
+      link='/images/c.jpg'
       description = 'This letter is C'
       break
     case 'd':
@@ -116,11 +104,11 @@ function getTagData (top) {
       description = 'This letter is D'
       break
     case 'e':
-      link= '/images/e.png'
+      link= '/images/e.jpg'
       description = 'This letter is E'
       break
     case 'f':
-      link= '/images/f.png'
+      link= '/images/f.jpg'
       description = 'This letter is F'
       break
     case 'g':
@@ -128,19 +116,19 @@ function getTagData (top) {
       description = 'This letter is G'
       break
     case 'h':
-      link= '/images/h.png'
+      link= '/images/h.jpg'
       description = 'This letter is H'
       break
     case 'i':
-      link= '/images/i.png'
+      link= '/images/i.jpg'
       description = 'This letter is I'
       break
     case 'j':
-      link= '/images/j.png'
+      link= '/images/j.jpg'
       description = 'This letter is J'
       break
     case 'k':
-      link= '/images/k.png'
+      link= '/images/k.jpg'
       description = 'This letter is K'
       break
     case 'l':
@@ -148,15 +136,15 @@ function getTagData (top) {
       description = 'This letter is L'
       break
     case 'm':
-      link= '/images/m.png'
+      link= '/images/m.jpg'
       description = 'This letter is M'
       break
     case 'n':
-      link= '/images/n.png'
+      link= '/images/n.jpg'
       description = 'This letter is N'
       break
     case 'o':
-      link= '/images/o.png'
+      link= '/images/o.jpg'
       description = 'This letter is O'
       break
     case 'p':
@@ -164,11 +152,11 @@ function getTagData (top) {
       description = 'This letter is P'
       break
     case 'q':
-      link= '/images/q.png'
+      link= '/images/q.jpg'
       description = 'This letter is Q'
       break
     case 'r':
-      link= '/images/r.png'
+      link= '/images/r.jpg'
       description = 'This letter is R'
       break
     case 's':
@@ -176,31 +164,31 @@ function getTagData (top) {
       description = 'This letter is S'
       break
     case 't':
-      link= '/images/t.png'
+      link= '/images/t.jpg'
       description = 'This letter is T'
       break
     case 'u':
-      link= '/images/u.png'
+      link= '/images/u.jpg'
       description = 'This letter is U'
       break
     case 'v':
-      link= '/images/v.png'
+      link= '/images/v.jpg'
       description = 'This letter is V'
       break
     case 'w':
-      link= '/images/w.png'
+      link= '/images/w.jpg'
       description = 'This letter is W'
       break
     case 'x':
-      link= '/images/x.png'
+      link= '/images/x.jpg'
       description = 'This letter is X'
       break
     case 'y':
-      link= '/images/y.png'
+      link= '/images/y.jpg'
       description = 'This letter is Y'
       break
     case 'z':
-      link= '/images/z.png'
+      link= '/images/z.jpg'
       description = 'This letter is Z'
       break
     case '':
