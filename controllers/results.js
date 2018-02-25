@@ -31,7 +31,7 @@ router.post('/', function (req, res, next) {
     // RENDER AN ERROR MESSAGE
     res.render('results',
       { title: 'Error',
-        description: 'Oops something went wrong! Submit another link to try again!',
+        description: 'Oops something went wrong!!' + reason,
         probability: 100,
         photo: '/images/Error.jpg'
       })
@@ -104,80 +104,105 @@ function getTagData (top) {
       description = 'This letter is A'
       break
     case 'b':
-      link= '/images/b.png'
+      link= '/images/b1.jpg'
       description = 'This letter is B'
+      break
     case 'c':
       link='/images/c.png'
       description = 'This letter is C'
+      break
     case 'd':
       link= '/images/d.png'
       description = 'This letter is D'
+      break
     case 'e':
       link= '/images/e.png'
       description = 'This letter is E'
+      break
     case 'f':
       link= '/images/f.png'
       description = 'This letter is F'
+      break
     case 'g':
       link= '/images/g.png'
       description = 'This letter is G'
+      break
     case 'h':
       link= '/images/h.png'
       description = 'This letter is H'
+      break
     case 'i':
       link= '/images/i.png'
       description = 'This letter is I'
+      break
     case 'j':
       link= '/images/j.png'
       description = 'This letter is J'
+      break
     case 'k':
       link= '/images/k.png'
       description = 'This letter is K'
+      break
     case 'l':
       link= '/images/l.png'
       description = 'This letter is L'
+      break
     case 'm':
       link= '/images/m.png'
       description = 'This letter is M'
+      break
     case 'n':
       link= '/images/n.png'
       description = 'This letter is N'
+      break
     case 'o':
       link= '/images/o.png'
       description = 'This letter is O'
+      break
     case 'p':
       link= '/images/p.png'
       description = 'This letter is P'
+      break
     case 'q':
       link= '/images/q.png'
       description = 'This letter is Q'
+      break
     case 'r':
       link= '/images/r.png'
       description = 'This letter is R'
+      break
     case 's':
       link= '/images/s.png'
       description = 'This letter is S'
+      break
     case 't':
       link= '/images/t.png'
       description = 'This letter is T'
+      break
     case 'u':
       link= '/images/u.png'
       description = 'This letter is U'
+      break
     case 'v':
       link= '/images/v.png'
       description = 'This letter is V'
+      break
     case 'w':
       link= '/images/w.png'
       description = 'This letter is W'
+      break
     case 'x':
       link= '/images/x.png'
       description = 'This letter is X'
+      break
     case 'y':
       link= '/images/y.png'
       description = 'This letter is Y'
+      break
     case 'z':
       link= '/images/z.png'
       description = 'This letter is Z'
+      break
     case '':
       link = '/images/Error.jpg'
       description = 'Oops something went wrong! Submit another link to try again!'
