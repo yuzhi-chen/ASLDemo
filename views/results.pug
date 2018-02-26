@@ -3,10 +3,9 @@ extends layout
 block content
   h1= title
   p #{description}
-  p= `I'm ${probability}% sure that I got that right...`
+  p= ``
   img.resultImg(src='http://localhost:3000' + photo)
   break
 
   form(method='GET' action='/')
     button.btn.btn-primary(type='submit') Back
-

@@ -1,3 +1,26 @@
+//Pauleen, Hannah, Braelyn, Emily
+//ASL translator
+//AthenaHacks2018
+//February 24-25, USC
+
+/*
+
+Used Microsoft Custom VISION
+
+l
+https://previews.123rf.com/images/thisboy/thisboy1004/thisboy100400038/28583506-finger-spelling-the-alphabet-letter-l-in-american-sign-language-asl.jpg
+
+b
+https://s3.amazonaws.com/bankstreet_web/media/filer_public/filer_public/2013/03/04/asl_b.jpg
+
+o
+http://images2.pics4learning.com/catalog/o/o.jpg
+
+blob
+https://s3.amazonaws.com/bankstreet_web/media/filer_public/filer_public/2013/03/04/asl_b.jpg,https://previews.123rf.com/images/thisboy/thisboy1004/thisboy100400038/28583506-finger-spelling-the-alphabet-letter-l-in-american-sign-language-asl.jpg,http://images2.pics4learning.com/catalog/o/o.jpg,https://s3.amazonaws.com/bankstreet_web/media/filer_public/filer_public/2013/03/04/asl_b.jpg
+
+*/
+
 require('dotenv').load()
 const request = require('request-promise-native')
 const express = require('express')
@@ -6,8 +29,6 @@ var azure = require('azure-storage');
 
 router.post('/', function (req, res, next) {
 
-  //const url = req.body.url
-  //const multipleUrlString =`http://deafdatingzone.com/theme/custom/A-MP900385724.JPG,https://www.signingsavvy.com/images/words/alphabet/2/b1.jpg`
   const urlFromWebsite = req.body.url
 
   let urlArray = urlFromWebsite.split(",")
@@ -35,7 +56,6 @@ router.post('/', function (req, res, next) {
           res.render('results', {
             title: 'Results',
              description: sentence,
-             probability: data.probability,
              photo: data.photo
           })
         // res.render('results', {
@@ -61,10 +81,6 @@ router.post('/', function (req, res, next) {
 
 module.exports = router
 
-// =========================================================
-// HELPER FUNCTIONS HERE
-// =========================================================
-
 
 // This funtion goes in the controllers/results.js file under the "helper functions" comment
 
@@ -85,8 +101,6 @@ function callAPI (url) {
     })
 }
 
-
-
 // This funtion goes in the controllers/results.js file under the "helper functions" comment
 
 function parseResponse (predictions) {
@@ -100,7 +114,6 @@ function parseResponse (predictions) {
 
   return top
 }
-
 
 // This funtion goes in the controllers/results.js file under the "helper functions" comment
 
